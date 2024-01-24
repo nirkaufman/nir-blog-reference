@@ -1,25 +1,23 @@
-import {useEffect, useState} from "react";
+
+import {Link, useLoaderData} from "react-router-dom";
 
 export function Posts() {
-  const [posts, setPosts] = useState([]);
+  const posts = useLoaderData()
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(json => setPosts(json))
-  }, []);
-
-    return (
-        <div>
-            <h1>Posts</h1>
-          <ul>
-                {posts.map(post => (
-                    <li key={post.id}>
-                        <h2>{post.title}</h2>
-                        <p>{post.body}</p>
-                    </li>
-                ))}
-          </ul>
-        </div>
-    )
+  return (
+      <div>
+        <h1>Posts</h1>
+        <ul className='list-group'>
+          {posts.map(post => (
+              <li key={post.id} className='list-group-item'>
+                <h2>
+                  <Link to={`/posts/${post.id}`}>
+                    {post.title}
+                  </Link>
+                </h2>
+              </li>
+          ))}
+        </ul>
+      </div>
+  )
 }

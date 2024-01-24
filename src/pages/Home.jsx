@@ -1,7 +1,11 @@
+import {Link} from "react-router-dom";
+import {Navbar} from "../layout/Navbar.jsx";
+
 export function Home() {
   return (
       <div>
         <h1>Home</h1>
+        <Link to="/posts">Read my blog!</Link>
         <p>
           Lorem Ipsum is simply dummy text of the printing and
           typesetting industry. Lorem Ipsum has been the industry's standard
