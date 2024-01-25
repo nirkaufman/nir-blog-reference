@@ -1,17 +1,20 @@
 import {Navbar} from "./Navbar.jsx";
 import {Outlet} from "react-router-dom";
+import {AuthProvider} from "../context/auth-provider.jsx";
 
 export function Layout() {
   return (
-    <div className="container-fluid">
-      <Navbar />
+      <div>
+        <AuthProvider>
+        <Navbar/>
 
-      <Outlet />
+          <Outlet/>
 
-      <footer>
-        <hr/>
-        My website
-      </footer>
-    </div>
+          <footer>
+            <hr/>
+            My website
+          </footer>
+        </AuthProvider>
+      </div>
   )
 }

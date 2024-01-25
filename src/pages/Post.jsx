@@ -16,7 +16,8 @@ export function Post() {
   }
 
     return (
-        <div>
+        <div className="container py-5">
+          <div className="alert alert-warning">You are an admin! you can delete</div>
             <h1>{post.title}</h1>
             <p>{post.body}</p>
         </div>

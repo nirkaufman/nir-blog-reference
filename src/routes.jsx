@@ -6,6 +6,7 @@ import {Post} from "./pages/Post.jsx";
 import {About} from "./pages/About.jsx";
 import {loadAllPosts} from "./loaders/posts.js";
 import {Admin} from "./pages/Admin.jsx";
+import {SignInForm} from "./pages/SignIn.jsx";
 
 export const routes = [
   {
@@ -33,7 +34,13 @@ export const routes = [
       {
         path: '/admin',
         element: <Admin/>
-      }
+      },
+
+      {
+        path: '/sign-in',
+        element: <SignInForm/>
+      },
+
     ]
   }
 ]

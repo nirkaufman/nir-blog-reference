@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "id": "nirkaufman@gmail.com",
+      "name": "Nir Kaufman",
+      "password": "123123123",
+      "role": "admin"
+    }
+  ],
   "posts": [
     {
       "id": "1",

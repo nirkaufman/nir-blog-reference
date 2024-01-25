@@ -1,23 +1,23 @@
-
 import {Link, useLoaderData} from "react-router-dom";
 
 export function Posts() {
   const posts = useLoaderData()
 
   return (
-      <div>
-        <h1>Posts</h1>
-        <ul className='list-group'>
+      <div className="container py-5">
+
+        <h2 className="my-2">What's going on?</h2>
+
+        <div className='list-group list-group-flush'>
           {posts.map(post => (
-              <li key={post.id} className='list-group-item'>
-                <h2>
-                  <Link to={`/posts/${post.id}`}>
-                    {post.title}
-                  </Link>
-                </h2>
-              </li>
+
+              <Link to={`/posts/${post.id}`}
+                    className='list-group-item list-group-item-action ps-0'>
+                {post.title}
+              </Link>
+
           ))}
-        </ul>
+        </div>
       </div>
   )
 }
