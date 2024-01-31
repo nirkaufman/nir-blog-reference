@@ -1,10 +1,10 @@
 import {URLS} from "../config/urls.js";
 import {useContext} from "react";
-import {AuthContext} from "../context/auth-context.js";
+import {BlogContext} from "../context/blog-context.js";
 
 
 export function Admin() {
-  const user = useContext(AuthContext);
+  const user = useContext(BlogContext);
 
 
 

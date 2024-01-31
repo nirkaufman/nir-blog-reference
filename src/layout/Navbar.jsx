@@ -1,18 +1,18 @@
 import {Link} from "react-router-dom";
 import {useContext} from "react";
-import {AuthContext} from "../context/auth-context.js";
+import {BlogContext} from "../context/blog-context.js";
 
 export function Navbar() {
-  const {user, signOut} = useContext(AuthContext);
+  const {state} = useContext(BlogContext);
 
   return (
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container">
 
-          {user ? (
+          {state.user ? (
               <span>
-                <span className='navbar-brand'>Hi {user.name}</span>
-                <span onClick={signOut}>Sign out</span>
+                <span className='navbar-brand'>Hi {state.user.name}</span>
+                <span>Sign out</span>
               </span>
 
           ) : (
@@ -31,7 +31,7 @@ export function Navbar() {
             </li>
 
 
-            {user && (
+            {state.user && (
                 <li className="nav-item">
                   <Link className="nav-link" to={"/admin"}>Admin</Link>
                 </li>)}

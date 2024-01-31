@@ -1,10 +1,12 @@
 import {useContext} from "react";
-import {AuthContext} from "../context/auth-context.js";
+import {BlogContext} from "../context/blog-context.js";
+import {URLS} from "../config/urls.js";
+import {ACTIONS} from "../state/events.js";
 
 // Sign-in form is responsible for:
 // rendering s signIn form, collecting the data from the form, and calling the signIn function from the context
 export function SignInForm() {
-  const {signIn} = useContext(AuthContext);
+  const {dispatch} = useContext(BlogContext);
 
 
   function handleSubmit(evt) {
@@ -13,7 +15,28 @@ export function SignInForm() {
     const email = evt.target.email.value;
     const password = evt.target.password.value;
 
+
     signIn(email, password);
+  }
+
+  async function signIn(email, password) {
+    const response = await fetch(URLS.BASE_URL + `/users/${email}`);
+    const user = await response.json();
+
+    if (user.password === password) {
+      dispatch({ type: ACTIONS.SET_USER, payload: user })
+    } else {
+      dispatch({ type: ACTIONS.SET_ERROR, payload: 'Something went wrong' })
+
+      setTimeout(() => {
+        dispatch({ type: ACTIONS.SET_ERROR, payload: '' })
+      }, 2000);
+
+    }
+  }
+
+  function signOut() {
+    dispatch({ type: ACTIONS.SET_USER, payload: null })
   }
 
 

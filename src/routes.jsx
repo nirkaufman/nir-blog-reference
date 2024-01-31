@@ -20,8 +20,6 @@ export const routes = [
       {
         path: "/posts",
         element: <Posts/>,
-        errorElement: <ErrorPage/>,
-        loader: loadAllPosts
       },
       {
         path: "/posts/:id",

@@ -1,20 +1,21 @@
 import {Navbar} from "./Navbar.jsx";
 import {Outlet} from "react-router-dom";
-import {AuthProvider} from "../context/auth-provider.jsx";
+import {useContext} from "react";
+import {BlogContext} from "../context/blog-context.js";
 
 export function Layout() {
+  const {state} = useContext(BlogContext);
+
   return (
       <div>
-        <AuthProvider>
         <Navbar/>
-
           <Outlet/>
 
           <footer>
+            {state.errorMsg && (<div className='card bg-danger'>{state.errorMsg}</div>)}
             <hr/>
             My website
           </footer>
-        </AuthProvider>
       </div>
   )
 }
