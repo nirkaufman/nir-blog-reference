@@ -1,8 +1,11 @@
 import {Link} from "react-router-dom";
 import {useContext} from "react";
-import {loadAllPosts} from "../loaders/posts.js";
-import {BlogContext} from "../context/blog-context.js";
-import {ACTIONS} from "../state/events.js";
+import {loadAllPosts} from "../../loaders/posts.js";
+import {BlogContext} from "../../context/blog-context.js";
+import {ACTIONS} from "../../state/events.js";
+
+import postsStyle from './posts.module.css';
+
 
 export function Posts() {
   const {state, dispatch} = useContext(BlogContext);
@@ -21,7 +24,7 @@ export function Posts() {
   return (
       <div className="container py-5">
 
-        <h2 className="my-2">What's going on?</h2>
+        <h2 className={`title my-2 ${postsStyle.textLg}`}>What's going on?</h2>
 
         <button onClick={loadPosts} className='btn btn-outline-primary'>Load my posts!</button>
 
